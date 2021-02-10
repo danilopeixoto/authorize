@@ -8,10 +8,20 @@ Authorizer for bank transactions.
 
 ## Installation
 
+### Production
+
 Install package:
 
 ```
 pip install .
+```
+
+### Development
+
+Install package and test dependencies:
+
+```
+pip install .[test]
 ```
 
 Use the `-e, --editable` flag to install package in development mode.
@@ -32,10 +42,12 @@ Run `authorize --help` for more information.
 Run tests:
 
 ```
-python tests
+pytest
 ```
 
-## Container Image
+> **Note**: requires test dependencies.
+
+## Container image
 
 ### Prerequisites
 

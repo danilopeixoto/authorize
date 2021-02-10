@@ -5,6 +5,8 @@ from setuptools import setup, find_packages
 
 
 def get_package_info(relative_path):
+  '''Get package information from module relative path.'''
+
   package_info = {}
 
   with open(convert_path(Path(relative_path) / '__init__.py'), 'r') as file:
@@ -17,12 +19,17 @@ package_name = 'authorize'
 package_info = get_package_info(package_name)
 
 requirements = [
-  'typer>=0.3.0'
+  'typer>=0.3.0',
+  'pydantic>=1.7.0'
+]
+
+test_requirements = [
+  'pytest>=6.2.0'
 ]
 
 entrypoints = {
   'console_scripts': [
-    f'{package_name} = {package_name}.cli.__main__:main'
+    f'{package_name} = {package_name}.cli:app'
   ]
 }
 
@@ -35,6 +42,7 @@ setup(
   license = package_info['__license__'],
   python_requires = '>=3.6.0',
   install_requires = requirements,
+  extras_require = dict(test = test_requirements),
   packages = find_packages(),
   entry_points = entrypoints,
   zip_safe = False)
