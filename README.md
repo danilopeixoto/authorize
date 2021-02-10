@@ -32,7 +32,7 @@ Run `authorize --help` for more information.
 Run tests:
 
 ```
-python tests
+python tests/
 ```
 
 ## Container Image
@@ -59,7 +59,7 @@ docker run authorize:1.0.0 < data/operations
 
 ## Documentation
 
-Check the [documentation](docs/index.md) for architecture and design decisions.
+Check the [documentation](docs/index.md) for architecture and design choices.
 
 ## Copyright and license
 
