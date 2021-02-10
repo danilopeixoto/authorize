@@ -32,7 +32,7 @@ Run `authorize --help` for more information.
 Run tests:
 
 ```
-python tests/
+python tests
 ```
 
 ## Container Image
