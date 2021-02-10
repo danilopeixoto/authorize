@@ -4,7 +4,7 @@ Authorizer for bank transactions.
 
 ## Prerequisites
 
-* [Python >=3.6.0](https://www.python.org)
+* [Python (>=3.6.0)](https://www.python.org)
 
 ## Installation
 
@@ -39,7 +39,7 @@ python tests
 
 ### Prerequisites
 
-* [Docker Engine >=19.03.10](https://www.docker.com)
+* [Docker Engine (>=19.03.10)](https://www.docker.com)
 
 ### Installation
 
