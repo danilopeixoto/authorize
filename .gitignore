@@ -1,3 +1,5 @@
+.vscode/
+.pytest*/
 .eggs/
 *.egg-info/
 __pycache__/
