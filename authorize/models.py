@@ -1,30 +1,39 @@
 
 from datetime import datetime
-from enum import Enum
 from typing import List
 
 from pydantic import BaseModel, Field, conint
 
 
-class Account(BaseModel):
+class Model(BaseModel):
+  '''Base model with custom configuration and encoders.'''
+
+  class Config:
+    '''Base model configuration.'''
+
+    json_encoders = {
+      datetime: lambda value: value.isoformat(
+        timespec = 'milliseconds').replace('+00:00', 'Z')
+    }
+
+
+class Account(Model):
+  '''Account model.'''
+
   active_card: bool = Field(..., alias = 'active-card')
   available_limit: conint(ge = 0) = Field(..., alias = 'available-limit')
 
 
-class Transaction(BaseModel):
+class Transaction(Model):
+  '''Transaction model.'''
+
   merchant: str
   amount: conint(ge = 0)
   time: datetime
 
 
-class AccountCreateOperation(BaseModel):
-  account: Account
+class AccountResponse(Model):
+  '''Account response model.'''
 
-
-class AccountTransactionOperation(BaseModel):
-  transaction: Transaction
-
-
-class AccountResponse(BaseModel):
   account: Account
   violations: List[str]

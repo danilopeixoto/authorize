@@ -45,7 +45,7 @@ Run tests:
 pytest
 ```
 
-> **Note**: requires test dependencies.
+> **Note:** requires test dependencies.
 
 ## Container image
 

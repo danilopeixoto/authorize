@@ -1,0 +1,9 @@
+{
+  "account": {
+    "active-card": true,
+    "available-limit": 80
+  },
+  "violations": [
+    "insufficient-limit"
+  ]
+}

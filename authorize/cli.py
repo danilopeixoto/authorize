@@ -1,9 +1,11 @@
-from pathlib import Path
+import sys
 from typing import Optional
 
 import typer
 
 from . import __version__
+from .parser import Parser
+from .account_state import AccountState
 
 
 app = typer.Typer(add_completion = False)
@@ -18,16 +20,17 @@ def version(value: bool):
 
 @app.command(context_settings = dict(help_option_names = ['-h', '--help']))
 def main(
-    filename: Path,
     version: Optional[bool] = typer.Option(
-      None, '--version', '-v', callback = version, help = version.__doc__)):
+      False, '--version', '-v', callback = version, help = version.__doc__)):
   '''Process bank operations.'''
 
-  if not filename.is_file():
-    typer.echo(f'Invalid file from {filename.resolve()}.')
-    raise typer.Exit(code = 1)
+  parser = Parser(sys.stdin)
+  account_state = AccountState(None)
 
-  typer.echo(filename)
+  for operation, controller in parser:
+    typer.echo(controller.process(operation, account_state))
+
+  typer.Exit()
 
 
 if __name__ == '__main__':
