@@ -34,15 +34,18 @@ class AccountState:
     return (transaction for transaction in self.transactions
       if start_time <= transaction.time < end_time)
 
-  def has_low_transaction_frequency(self, transaction, count = 3, interval = timedelta(minutes = 2)):
+  def has_low_transaction_frequency(
+      self, transaction, count = 3, interval = timedelta(minutes = 2)):
     '''Return true if the account has low transaction frequency, otherwise false.'''
 
     initial_time = transaction.time - interval
     end_time = transaction.time
 
-    return len(list(self.get_transactions_by_time_interval(initial_time, end_time))) < count
+    return len(list(
+      self.get_transactions_by_time_interval(initial_time, end_time))) < count
 
-  def has_doubled_transaction(self, transaction, interval = timedelta(minutes = 2)):
+  def has_doubled_transaction(
+      self, transaction, interval = timedelta(minutes = 2)):
     '''Return true if the account has doubled transaction, otherwise false.'''
 
     initial_time = transaction.time - interval

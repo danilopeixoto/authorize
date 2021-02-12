@@ -29,7 +29,7 @@ test_requirements = [
 
 entrypoints = {
   'console_scripts': [
-    f'{package_name} = {package_name}.cli.__main__:app'
+    f'{package_name} = {package_name}.cli:app'
   ]
 }
 

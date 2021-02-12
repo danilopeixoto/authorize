@@ -16,7 +16,8 @@ class OperationController:
       key = lambda validator: validator.precedence)
 
     return reduce(
-      lambda violations, validate: violations + validate(self, operation, account_state),
+      lambda violations, validator: (
+        violations + validator(self, operation, account_state)),
       validators, [])
 
   def process(self, operation, account_state):

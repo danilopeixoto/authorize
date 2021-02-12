@@ -21,8 +21,8 @@ def version(value: bool):
 @app.command(context_settings = dict(help_option_names = ['-h', '--help']))
 def main(
     version: Optional[bool] = typer.Option(
-      False, '--version', '-v', callback = version, help = version.__doc__)):
-  '''Process bank operations.'''
+      None, '--version', '-v', callback = version, help = version.__doc__)):
+  '''Authorize bank transactions.'''
 
   parser = OperationParser(sys.stdin)
   account_state = AccountState(None)
