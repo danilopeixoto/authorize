@@ -35,7 +35,7 @@ class AccountState:
       if start_time <= transaction.time < end_time)
 
   def has_low_transaction_frequency(
-      self, transaction, count = 3, interval = timedelta(minutes = 2)):
+      self, transaction, interval = timedelta(minutes = 2), count = 3):
     '''Return true if the account has low transaction frequency, otherwise false.'''
 
     initial_time = transaction.time - interval
