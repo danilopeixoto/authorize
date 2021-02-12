@@ -48,12 +48,12 @@ class TransactionOperationController(OperationController):
       else [TransactionViolation.doubled_transaction])
 
   def process(self, operation, account_state):
-    '''Validate rules and commit transaction.'''
+    '''Validate rules and release transaction.'''
 
     violations = self.validate(operation, account_state)
 
     if len(violations) == 0:
-      account_state.commit_transaction(operation.transaction)
+      account_state.release_transaction(operation.transaction)
 
     return AccountResponse(
       account = account_state.account,

@@ -61,8 +61,8 @@ class AccountState:
 
     return len(list(transactions)) != len(unique_transactions)
 
-  def commit_transaction(self, transaction):
-    '''Commit transaction operation.'''
+  def release_transaction(self, transaction):
+    '''Release transaction operation.'''
 
     self.account = Account(
       available_limit = self.account.available_limit - transaction.amount,
