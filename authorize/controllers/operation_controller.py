@@ -21,6 +21,6 @@ class OperationController:
       validators, [])
 
   def process(self, operation, account_state):
-    '''Implement operation logic.'''
+    '''Process operation logic.'''
 
-    raise NotImplementedError('abstract method.')
+    raise NotImplementedError('calling abstract method.')
