@@ -1,5 +1,4 @@
-from pathlib import Path
-
+import os
 from distutils.util import convert_path
 from setuptools import setup, find_packages
 
@@ -9,7 +8,7 @@ def get_package_info(relative_path):
 
   package_info = {}
 
-  with open(convert_path(Path(relative_path) / '__init__.py'), 'r') as file:
+  with open(convert_path(os.path.join(relative_path, '__init__.py')), 'r') as file:
     exec(file.read(), package_info)
 
   return package_info
