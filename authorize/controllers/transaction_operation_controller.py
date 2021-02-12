@@ -36,7 +36,7 @@ class TransactionOperationController(OperationController):
     '''Validate account transaction frequency.'''
 
     return ([]
-      if account_state.has_low_transaction_frequency(operation.transaction)
+      if not account_state.has_high_frequency_transaction(operation.transaction)
       else [TransactionViolation.high_frequency_small_interval])
 
   @validator
@@ -44,7 +44,7 @@ class TransactionOperationController(OperationController):
     '''Validate account doubled transaction.'''
 
     return ([]
-      if account_state.has_doubled_transaction(operation.transaction)
+      if not account_state.has_doubled_transaction(operation.transaction)
       else [TransactionViolation.doubled_transaction])
 
   def process(self, operation, account_state):

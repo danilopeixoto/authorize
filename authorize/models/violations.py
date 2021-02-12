@@ -14,4 +14,4 @@ class TransactionViolation(str, Enum):
   card_not_active = 'card-not-active'
   insufficient_limit = 'insufficient-limit'
   high_frequency_small_interval = 'high-frequency-small-interval'
-  doubled_transaction = '​doubled-transaction'
+  doubled_transaction = 'doubled-transaction'

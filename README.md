@@ -24,7 +24,7 @@ Install package and test dependencies:
 pip install .[test]
 ```
 
-Use the `-e, --editable` flag to install package in development mode.
+Use the `-e, --editable` flag to install the package in development mode.
 
 ## Usage
 
@@ -66,8 +66,10 @@ docker build -t authorize:1.0.0 .
 Run image application:
 
 ```
-docker run authorize:1.0.0 < data/operations
+docker run -i authorize:1.0.0 < data/operations
 ```
+
+Use the `--rm` flag to automatically remove the container when application exits.
 
 ## Documentation
 

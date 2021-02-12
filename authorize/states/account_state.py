@@ -1,5 +1,4 @@
 from datetime import timedelta
-import itertools
 
 from ..models import Account
 
@@ -28,38 +27,28 @@ class AccountState:
 
     return self.account.available_limit >= transaction.amount
 
-  def get_transactions_by_time_interval(self, start_time, end_time):
-    '''Filter transactions by time interval.'''
+  def get_last_transactions(self, since):
+    '''Filter last transactions.'''
 
     return (transaction for transaction in self.transactions
-      if start_time <= transaction.time < end_time)
+      if transaction.time >= since)
 
-  def has_low_transaction_frequency(
+  def has_high_frequency_transaction(
       self, transaction, interval = timedelta(minutes = 2), count = 3):
-    '''Return true if the account has low transaction frequency, otherwise false.'''
+    '''Return true if the account has high frequency transaction, otherwise false.'''
 
-    initial_time = transaction.time - interval
-    end_time = transaction.time
+    last_transactions = self.get_last_transactions(transaction.time - interval)
 
-    return len(list(
-      self.get_transactions_by_time_interval(initial_time, end_time))) < count
+    return len(list(last_transactions)) + 1 > count
 
   def has_doubled_transaction(
       self, transaction, interval = timedelta(minutes = 2)):
     '''Return true if the account has doubled transaction, otherwise false.'''
 
-    initial_time = transaction.time - interval
-    end_time = transaction.time
+    last_transactions = (transaction.dict(exclude = {'time'})
+      for transaction in self.get_last_transactions(transaction.time - interval))
 
-    transactions = itertools.chain(
-      self.get_transactions_by_time_interval(initial_time, end_time),
-      [transaction])
-
-    unique_transactions = set(
-      frozenset(transaction.dict(exclude = {'time'}).items())
-        for transaction in transactions)
-
-    return len(list(transactions)) != len(unique_transactions)
+    return transaction.dict(exclude = {'time'}) in last_transactions
 
   def release_transaction(self, transaction):
     '''Release transaction operation.'''
