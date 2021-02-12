@@ -1,4 +1,6 @@
-from .models import Model, Account, Transaction
+from .model import Model
+from .account import Account
+from .transaction import Transaction
 
 
 class AccountOperation(Model):
@@ -11,9 +13,3 @@ class TransactionOperation(Model):
   '''Transaction operation model.'''
 
   transaction: Transaction
-
-
-__all__ = [
-  'AccountOperation',
-  'TransactionOperation'
-]

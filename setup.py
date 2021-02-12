@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 
 def get_package_info(relative_path):
-  '''Get package information from module relative path.'''
+  '''Get package information from module path.'''
 
   package_info = {}
 
@@ -29,7 +29,7 @@ test_requirements = [
 
 entrypoints = {
   'console_scripts': [
-    f'{package_name} = {package_name}.cli:app'
+    f'{package_name} = {package_name}.cli.__main__:app'
   ]
 }
 

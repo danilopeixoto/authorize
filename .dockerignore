@@ -1,6 +1,6 @@
+.git/
 .vscode/
 .pytest*/
-.git/
 .eggs/
 *.egg-info/
 __pycache__/

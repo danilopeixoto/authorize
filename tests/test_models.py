@@ -1,5 +1,7 @@
-from authorize.models import AccountResponse
-from authorize.operations import AccountOperation, TransactionOperation
+from authorize.models import (
+  AccountResponse,
+  AccountOperation,
+  TransactionOperation)
 
 import utils
 

@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.6
 
 LABEL description "Authorizer for bank transactions."
 LABEL version "1.0.0"

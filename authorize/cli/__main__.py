@@ -3,9 +3,9 @@ from typing import Optional
 
 import typer
 
-from . import __version__
-from .parser import Parser
-from .account_state import AccountState
+from .. import __version__
+from ..parsers import OperationParser
+from ..states import AccountState
 
 
 app = typer.Typer(add_completion = False)
@@ -24,11 +24,11 @@ def main(
       False, '--version', '-v', callback = version, help = version.__doc__)):
   '''Process bank operations.'''
 
-  parser = Parser(sys.stdin)
+  parser = OperationParser(sys.stdin)
   account_state = AccountState(None)
 
   for operation, controller in parser:
-    typer.echo(controller.process(operation, account_state))
+    typer.echo(controller.process(operation, account_state).json())
 
   typer.Exit()
 
