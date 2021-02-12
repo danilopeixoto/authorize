@@ -27,10 +27,14 @@ def main(
   parser = OperationParser(sys.stdin)
   account_state = AccountState(None)
 
-  for operation, controller in parser:
-    typer.echo(controller.process(operation, account_state).json())
+  try:
+    for operation, controller in parser:
+      typer.echo(controller.process(operation, account_state).json())
 
-  typer.Exit()
+    typer.Exit()
+  except Exception as exception:
+    typer.echo(f'Error: {exception}', err = True)
+    typer.Exit(code = -1)
 
 
 if __name__ == '__main__':
