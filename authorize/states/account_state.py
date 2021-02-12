@@ -15,7 +15,7 @@ class AccountState:
   def is_initialized(self):
     '''Return true if the account is initialized, otherwise false.'''
 
-    return self.account is not None
+    return isinstance(self.account, Account)
 
   def has_active_card(self):
     '''Return true if the account has an active card, otherwise false.'''

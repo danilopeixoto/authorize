@@ -13,8 +13,15 @@ class Account(Model):
   available_limit: conint(ge = 0) = Field(..., alias = 'available-limit')
 
 
+class UninitializedAccount(Model):
+  '''Uninitialized account model.'''
+
+  active_card: bool = Field(False, const = True)
+  available_limit: int = Field(0, const = True)
+
+
 class AccountResponse(Model):
   '''Account response model.'''
 
-  account: Account
+  account: Union[Account, UninitializedAccount]
   violations: List[Union[AccountViolation, TransactionViolation]]

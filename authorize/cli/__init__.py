@@ -4,6 +4,7 @@ from typing import Optional
 import typer
 
 from .. import __version__
+from ..models import UninitializedAccount
 from ..parsers import OperationParser
 from ..states import AccountState
 
@@ -11,7 +12,7 @@ from ..states import AccountState
 app = typer.Typer(add_completion = False)
 
 
-def version(value: bool):
+def show_version(value: bool):
   '''Show version and exit.'''
 
   if value:
@@ -21,15 +22,19 @@ def version(value: bool):
 @app.command(context_settings = dict(help_option_names = ['-h', '--help']))
 def main(
     version: Optional[bool] = typer.Option(
-      None, '--version', '-v', callback = version, help = version.__doc__)):
+      None,
+      '--version', '-v',
+      callback = show_version,
+      help = show_version.__doc__)):
   '''Authorize bank transactions.'''
 
   parser = OperationParser(sys.stdin)
-  account_state = AccountState(None)
+  account_state = AccountState(UninitializedAccount())
 
   try:
     for operation, controller in parser:
-      typer.echo(controller.process(operation, account_state).json())
+      response = controller.process(operation, account_state)
+      typer.echo(response.json(by_alias = True))
 
     typer.Exit()
   except Exception as exception:
