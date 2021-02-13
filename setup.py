@@ -8,7 +8,8 @@ def get_package_info(relative_path):
 
   package_info = {}
 
-  with open(convert_path(os.path.join(relative_path, '__init__.py')), 'r') as file:
+  with open(convert_path(
+      os.path.join(relative_path, '__init__.py')), 'r') as file:
     exec(file.read(), package_info)
 
   return package_info
