@@ -18,7 +18,7 @@ The design of controllers and rules avoids conditional checks and makes them gen
 
 In order to add a new operation, the `OperationController` interface must be derived. The controllers will be automatically instantiated by the parser based on the name and no additional steps are required to register new operations.
 
-Rules are defined as controller methods decorated/wrapped by `Validator` objects. These objects are collected during the validation step and applied to the data sequentially, returning possible violations.
+Rules are defined as controller methods decorated/wrapped with `Validator` objects. These objects are collected during the validation step and applied to the data sequentially, returning possible violations.
 
 ## States
 
@@ -30,7 +30,7 @@ The application is represented as a CLI. The command line interface documents it
 
 ## Tests
 
-Unit and integrated tests around component groups at different implementation levels reduce non-logic errors that are hard to debug at the development stage. In the long term, they ensure that refactoring issues are tracked directly and independently.
+Unit and integrated tests around component groups at different implementation levels, reduce non-logic errors that are hard to debug at the development stage. In the long term, they ensure that refactoring issues are tracked directly and independently.
 
 Functional tests available in the `test_cli` module validate the CLI and test the basic usability of the application.
 
