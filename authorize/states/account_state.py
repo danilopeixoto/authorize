@@ -13,17 +13,17 @@ class AccountState:
     self.transactions = []
 
   def is_initialized(self):
-    '''Return true if the account is initialized, otherwise false.'''
+    '''Return true if the account is initialized, false otherwise.'''
 
     return isinstance(self.account, Account)
 
   def has_active_card(self):
-    '''Return true if the account has an active card, otherwise false.'''
+    '''Return true if the account has an active card, false otherwise.'''
 
     return self.account.active_card
 
   def has_sufficient_limit(self, transaction):
-    '''Return true if the account has sufficient limit, otherwise false.'''
+    '''Return true if the account has sufficient limit, false otherwise.'''
 
     return self.account.available_limit >= transaction.amount
 
@@ -35,7 +35,7 @@ class AccountState:
 
   def has_high_frequency_transaction(
       self, transaction, interval = timedelta(minutes = 2), count = 3):
-    '''Return true if the account has high frequency transaction, otherwise false.'''
+    '''Return true if the account has high frequency transaction, false otherwise.'''
 
     last_transactions = self.get_last_transactions(transaction.time - interval)
 
@@ -43,7 +43,7 @@ class AccountState:
 
   def has_doubled_transaction(
       self, transaction, interval = timedelta(minutes = 2)):
-    '''Return true if the account has doubled transaction, otherwise false.'''
+    '''Return true if the account has doubled transaction, false otherwise.'''
 
     last_transactions = (transaction.dict(exclude = {'time'})
       for transaction in self.get_last_transactions(transaction.time - interval))
