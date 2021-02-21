@@ -2,11 +2,11 @@
 
 The architecture has been designed to be modular and extensible for new commands, operations and rules.
 
-Operations are defined as controllers and resolve the rule validation flow and implement the business logic of the operations.
+Operations are defined as controllers to resolve the rule validation flow and implement the business logic of the operations.
 
 ## Models
 
-The requirements do not enforce validation, but Pydantic was used to define the application data model. These strict models provide out of box, parsing, validation and immutability.
+The requirements do not enforce validation, but Pydantic was used to define the application data model. These strict models provide out-of-the-box parsing, validation and immutability.
 
 They simplify the implementation of the parser and enable the conversion of data into different representations such as the JSON string into native dictionaries.
 
@@ -34,12 +34,12 @@ Unit and integrated tests around component groups at different implementation le
 
 Functional tests available in the `test_cli` module validate the CLI and test the basic usability of the application.
 
-Pytest has the “fixture” concept that allows to reuse input objects for test routines. It contributes to reduce the test code, but introduces dependence on test inputs that can be hard to track. The feature was regarded as valid because the test was designed to be immutable and incremental.
+Pytest has the “fixture” concept that allows to reuse input objects for test routines. It contributes to minimize the test code, but introduces dependence on test inputs that can be hard to track. The feature was regarded as valid because the test was designed to be immutable and incremental.
 
 ## Distribution
 
-The application is distributed as a standard Python package that can be easily installed by the PIP package manager. The setup automatically builds binaries for CLI and provides the core library for test development.
+The application is distributed as a standard Python package and can be easily installed by the PIP package manager. The setup automatically builds binaries for CLI and provides the core library for test development.
 
 The ability to switch between development and production environments allows for fast coding and maintains the integrity of the end product by avoiding the distribution of unnecessary dependencies.
 
-The package also provides a containerized version of the application. The isolation allows to run the application serverless.
+The package also provides a containerized version of the application. The isolation allows to run a serverless application.
