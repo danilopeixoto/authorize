@@ -2,9 +2,9 @@ __title__ = 'Authorize'
 __version__ = '1.0.0'
 __description__ = 'Authorizer for bank transactions.'
 __author__ = 'Author'
-__email__ = 'author@nubank.com.br'
+__email__ = 'author@stone.com.br'
 __license__ = 'Proprietary License'
-__copyright__ = 'Copyright (c) 2021, Nu Pagamentos S.A. All rights reserved.'
+__copyright__ = 'Copyright (c) 2021, StoneCo Ltd. All rights reserved.'
 
 
 __all__ = [

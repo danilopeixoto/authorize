@@ -77,6 +77,6 @@ Check the [documentation](docs/index.md) for architecture and design choices.
 
 ## Copyright and license
 
-Copyright (c) 2021, Nu Pagamentos S.A. All rights reserved.
+Copyright (c) 2021, StoneCo Ltd. All rights reserved.
 
 Project developed under a [Proprietary License](LICENSE.md).
